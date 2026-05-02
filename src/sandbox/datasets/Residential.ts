@@ -1,0 +1,305 @@
+import { AddressRecord } from "./AddressRecord";
+
+/**
+ * Real, USPS-compliant residential addresses across
+ * Chicago and surrounding suburbs.
+ *
+ * These are sampled, physically existing locations.
+ * No apartment/unit numbers are included intentionally.
+ */
+
+export const RESIDENTIAL_ADDRESSES: AddressRecord[] = [
+  // --- Chicago: North Side ---
+  {
+    label: "Lincoln Park Residence",
+    street1: "2430 N Geneva Terrace",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60614",
+    country: "US",
+  },
+  {
+    label: "Lakeview Residence",
+    street1: "814 W Roscoe St",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60657",
+    country: "US",
+  },
+  {
+    label: "Roscoe Village Residence",
+    street1: "2135 W Belmont Ave",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60618",
+    country: "US",
+  },
+  {
+    label: "Uptown Residence",
+    street1: "1010 W Lawrence Ave",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60640",
+    country: "US",
+  },
+  {
+    label: "Edgewater Residence",
+    street1: "5950 N Ridge Ave",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60660",
+    country: "US",
+  },
+
+  // --- Chicago: West & Near West ---
+  {
+    label: "Wicker Park Residence",
+    street1: "1456 N Milwaukee Ave",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60622",
+    country: "US",
+  },
+  {
+    label: "Logan Square Residence",
+    street1: "2758 N Kedzie Blvd",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60647",
+    country: "US",
+  },
+  {
+    label: "Humboldt Park Residence",
+    street1: "1440 N California Ave",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60622",
+    country: "US",
+  },
+  {
+    label: "West Loop Residence",
+    street1: "1000 W Monroe St",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60607",
+    country: "US",
+  },
+  {
+    label: "Ukrainian Village Residence",
+    street1: "2200 W Chicago Ave",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60622",
+    country: "US",
+  },
+
+  // --- Chicago: South Side ---
+  {
+    label: "Bronzeville Residence",
+    street1: "4501 S Prairie Ave",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60653",
+    country: "US",
+  },
+  {
+    label: "Hyde Park Residence",
+    street1: "5420 S Harper Ave",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60615",
+    country: "US",
+  },
+  {
+    label: "Bridgeport Residence",
+    street1: "3120 S Halsted St",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60608",
+    country: "US",
+  },
+  {
+    label: "Beverly Residence",
+    street1: "10324 S Longwood Dr",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60643",
+    country: "US",
+  },
+  {
+    label: "South Shore Residence",
+    street1: "6950 S Paxton Ave",
+    city: "Chicago",
+    state: "IL",
+    postalCode: "60649",
+    country: "US",
+  },
+
+  // --- Near North Suburbs ---
+  {
+    label: "Evanston Residence",
+    street1: "1212 Ridge Ave",
+    city: "Evanston",
+    state: "IL",
+    postalCode: "60201",
+    country: "US",
+  },
+  {
+    label: "Wilmette Residence",
+    street1: "909 Greenleaf Ave",
+    city: "Wilmette",
+    state: "IL",
+    postalCode: "60091",
+    country: "US",
+  },
+  {
+    label: "Winnetka Residence",
+    street1: "825 Sheridan Rd",
+    city: "Winnetka",
+    state: "IL",
+    postalCode: "60093",
+    country: "US",
+  },
+  {
+    label: "Glencoe Residence",
+    street1: "620 Hazel Ave",
+    city: "Glencoe",
+    state: "IL",
+    postalCode: "60022",
+    country: "US",
+  },
+  {
+    label: "Highland Park Residence",
+    street1: "1550 Sheridan Rd",
+    city: "Highland Park",
+    state: "IL",
+    postalCode: "60035",
+    country: "US",
+  },
+
+  // --- West Suburbs ---
+  {
+    label: "Oak Park Residence",
+    street1: "321 N Oak Park Ave",
+    city: "Oak Park",
+    state: "IL",
+    postalCode: "60302",
+    country: "US",
+  },
+  {
+    label: "River Forest Residence",
+    street1: "7422 Lake St",
+    city: "River Forest",
+    state: "IL",
+    postalCode: "60305",
+    country: "US",
+  },
+  {
+    label: "Elmhurst Residence",
+    street1: "255 S York St",
+    city: "Elmhurst",
+    state: "IL",
+    postalCode: "60126",
+    country: "US",
+  },
+  {
+    label: "Lombard Residence",
+    street1: "101 S Main St",
+    city: "Lombard",
+    state: "IL",
+    postalCode: "60148",
+    country: "US",
+  },
+  {
+    label: "Wheaton Residence",
+    street1: "225 E Seminary Ave",
+    city: "Wheaton",
+    state: "IL",
+    postalCode: "60187",
+    country: "US",
+  },
+
+  // --- Southwest & Western Suburbs ---
+  {
+    label: "Oak Brook Residence",
+    street1: "15W431 59th St",
+    city: "Oak Brook",
+    state: "IL",
+    postalCode: "60523",
+    country: "US",
+  },
+  {
+    label: "Hinsdale Residence",
+    street1: "117 S Grant St",
+    city: "Hinsdale",
+    state: "IL",
+    postalCode: "60521",
+    country: "US",
+  },
+  {
+    label: "La Grange Residence",
+    street1: "35 S La Grange Rd",
+    city: "La Grange",
+    state: "IL",
+    postalCode: "60525",
+    country: "US",
+  },
+  {
+    label: "Western Springs Residence",
+    street1: "4700 Wolf Rd",
+    city: "Western Springs",
+    state: "IL",
+    postalCode: "60558",
+    country: "US",
+  },
+  {
+    label: "Naperville Residence",
+    street1: "1235 Royal St George Dr",
+    city: "Naperville",
+    state: "IL",
+    postalCode: "60563",
+    country: "US",
+  },
+
+  // --- Northwest Suburbs ---
+  {
+    label: "Park Ridge Residence",
+    street1: "1020 S Fairview Ave",
+    city: "Park Ridge",
+    state: "IL",
+    postalCode: "60068",
+    country: "US",
+  },
+  {
+    label: "Des Plaines Residence",
+    street1: "1700 River Rd",
+    city: "Des Plaines",
+    state: "IL",
+    postalCode: "60018",
+    country: "US",
+  },
+  {
+    label: "Arlington Heights Residence",
+    street1: "201 W Miner St",
+    city: "Arlington Heights",
+    state: "IL",
+    postalCode: "60005",
+    country: "US",
+  },
+  {
+    label: "Mount Prospect Residence",
+    street1: "401 N Emerson St",
+    city: "Mount Prospect",
+    state: "IL",
+    postalCode: "60056",
+    country: "US",
+  },
+  {
+    label: "Schaumburg Residence",
+    street1: "200 S Roselle Rd",
+    city: "Schaumburg",
+    state: "IL",
+    postalCode: "60193",
+    country: "US",
+  },
+];
