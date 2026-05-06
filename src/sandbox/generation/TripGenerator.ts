@@ -13,8 +13,8 @@
  * - Is deterministic when a seed is provided
  */
 
-import { ReservationServiceType, ReservationTripType } from "../../domain/ReservationClassification";
-import { AddressRecord } from "../../datasets/addresses/AddressRecord";
+import { ReservationServiceType, ReservationTripType } from "../reservations/ReservationClassification";
+import { AddressRecord } from "../datasets/addresses/AddressRecord";
 import { ADDRESS_DATASET } from "../../datasets/addresses";
 import { v4 as uuidv4 } from "uuid";
 
