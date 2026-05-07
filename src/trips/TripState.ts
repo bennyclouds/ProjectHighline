@@ -1,11 +1,10 @@
 export const TripState = {
-  Draft: "DRAFT" as const,
   Ready: "READY" as const,
   Assigned: "ASSIGNED" as const,
   EnRoute: "EN_ROUTE" as const,
-  InProgress: "IN_PROGRESS" as const,
-  Completed: "COMPLETED" as const,
-  Canceled: "CANCELED" as const,
+  OnLocation: "ON_LOCATION" as const,
+  InMotion: "IN_MOTION" as const,
+  TripEnded: "TRIP_ENDED" as const,
 };
 
 export type TripState = typeof TripState[keyof typeof TripState];
