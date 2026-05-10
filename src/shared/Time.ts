@@ -59,7 +59,7 @@ export function durationMs(start: Timestamp, end: Timestamp): number {
   return end - start;
 }
 
-/** Human-friendly duration string (e.g., "1h 23m") for debugging/logs only. */
+/** Human-friendly duration string (e.g., "1h 23m") for debugging/logs. */
 export function formatDurationHuman(ms: number): string {
   const abs = Math.abs(ms);
   const hours = Math.floor(abs / 3_600_000);
