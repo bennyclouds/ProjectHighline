@@ -5,7 +5,6 @@ import { nowUtc, type Timestamp } from "../shared/Time";
 import { TimeWindow } from "../shared/TimeWindow";
 
 import { Reservation } from "../reservations/Reservation";
-import { ReservationType } from "../reservations/ReservationType";
 import { ReservationState } from "../reservations/ReservationState";
 
 import { TripState } from "../domain/TripState";

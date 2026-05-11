@@ -20,10 +20,12 @@
  * - Private: vehicle is dedicated to a single reservation
  * - Shared: reservation may coexist with others on the same vehicle
  */
-export enum ReservationServiceType {
-  Private = "PRIVATE",
-  Shared = "SHARED",
-}
+export const ReservationServiceType = {
+  Private: "PRIVATE",
+  Shared: "SHARED",
+} as const;
+
+export type ReservationServiceType = typeof ReservationServiceType[keyof typeof ReservationServiceType];
 
 /**
  * ReservationTripType
@@ -32,33 +34,35 @@ export enum ReservationServiceType {
  * This affects timing rules, buffers, routing logic,
  * and eventually pricing and simulation behavior.
  */
-export enum ReservationTripType {
+export const ReservationTripType = {
   /**
    * Passenger is being transported TO an airport
    * for a departing flight.
    */
-  Departure = "DEPARTURE",
+  Departure: "DEPARTURE",
 
   /**
    * Passenger is being picked up FROM an airport
    * after an arriving flight.
    */
-  Arrival = "ARRIVAL",
+  Arrival: "ARRIVAL",
 
   /**
    * Point-to-point transportation with no airport semantics.
    */
-  PTP = "PTP",
+  PTP: "PTP",
 
   /**
    * Time-based service where vehicle and driver
    * are reserved for a duration rather than a route.
    */
-  Hourly = "HOURLY",
+  Hourly: "HOURLY",
 
   /**
    * Extended or special service, possibly spanning
    * multiple hours or days, with bespoke rules.
    */
-  Charter = "CHARTER",
-}
+  Charter: "CHARTER",
+} as const;
+
+export type ReservationTripType = typeof ReservationTripType[keyof typeof ReservationTripType];
