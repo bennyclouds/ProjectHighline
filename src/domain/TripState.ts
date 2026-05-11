@@ -2,9 +2,11 @@
 export type TripState = "READY" | "ASSIGNED" | "EN_ROUTE" | "COMPLETED" | "CANCELED";
 
 export const TripState = {
-  READY: "READY" as TripState,
-  ASSIGNED: "ASSIGNED" as TripState,
-  EN_ROUTE: "EN_ROUTE" as TripState,
-  COMPLETED: "COMPLETED" as TripState,
-  CANCELED: "CANCELED" as TripState,
+  Draft: "DRAFT" as TripState,
+  Ready: "READY" as TripState,
+  Assigned: "ASSIGNED" as TripState,
+  InProgress: "IN_PROGRESS" as TripState,
+  EnRoute: "EN_ROUTE" as TripState,
+  Completed: "COMPLETED" as TripState,
+  Canceled: "CANCELED" as TripState,
 };

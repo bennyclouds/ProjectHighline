@@ -1,4 +1,4 @@
-import { AddressRecord } from "./AddressRecord";
+import type { AddressRecord } from "./AddressRecord";
 
 export const HOTEL_ADDRESSES: AddressRecord[] = [
   {

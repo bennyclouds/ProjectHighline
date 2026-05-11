@@ -1,7 +1,7 @@
 // src/trips/TripEvents.ts
 import { DomainEvent } from "../shared/DomainEvent";
 import type { Timestamp } from "../shared/Time";
-import { TripState } from "./TripState";
+import { TripState } from "../domain/TripState";
 
 /** Emitted when a Trip changes state (audit + UI). */
 export class TripStateChangedEvent extends DomainEvent {

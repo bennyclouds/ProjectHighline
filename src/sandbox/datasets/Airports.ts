@@ -1,10 +1,10 @@
-import { AddressRecord } from "./AddressRecord";
+import type { AddressRecord } from "./AddressRecord";
 
 export interface AirportAddressRecord extends AddressRecord {
   iataCode: string;
 }
 
-export const AIRPORT_ADDRESSES: AirportAddressRecord[] = [
+export const AIRPORT_ADDRESS: AirportAddressRecord[] = [
   {
     label: "Chicago O'Hare International Airport",
     iataCode: "ORD",

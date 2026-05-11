@@ -3,7 +3,7 @@ import { Entity } from "../shared/Entity";
 import { nowUtc } from "../shared/Time";
 import type { Timestamp } from "../shared/Time";
 import { ReservationState } from "./ReservationState";
-import type { ReservationType } from "./ReservationType";
+import type { ReservationServiceType, ReservationTripType } from "./ReservationClassification";
 import type { GroupProfile } from "../groups/GroupProfile";
 import type { PaymentInfo } from "../payments/PaymentInfo";
 import { validateReservationProps } from "./ReservationValidation";
@@ -34,8 +34,9 @@ export class Reservation extends Entity {
 
   // --- Organization / basic reservation info (existing)
   readonly orgId?: string;
-  readonly type: ReservationType;
-  readonly paxCount: number;
+  readonly type: ReservationServiceType;
+  readonly tripType: ReservationTripType;
+  paxCount: number; 
 
   // --- Locations / windows (existing)
   readonly pickupLocation: string;
@@ -95,7 +96,8 @@ export class Reservation extends Entity {
   constructor(params: {
     id: string;
     orgId?: string;
-    type: ReservationType;
+    type: ReservationServiceType;
+    tripType: ReservationTripType;
     paxCount: number;
     pickupLocation: string;
     dropoffLocation: string;

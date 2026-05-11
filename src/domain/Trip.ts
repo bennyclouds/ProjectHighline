@@ -5,6 +5,7 @@ import { nowUtc, type Timestamp } from "../shared/Time";
 import { TimeWindow } from "../shared/TimeWindow";
 
 import { Reservation } from "../reservations/Reservation";
+import { ReservationServiceType } from "../reservations/ReservationClassification";
 import { ReservationState } from "../reservations/ReservationState";
 
 import { TripState } from "../domain/TripState";
@@ -80,7 +81,7 @@ export class Trip extends Entity {
     }
 
     // Private reservation combining logic
-    if (res.type === ReservationType.Private && this.reservations.length > 0) {
+    if (res.type === ReservationServiceType.Private && this.reservations.length > 0) {
       const allow = options?.allowPrivateOverride === true;
       const by = options?.overriddenBy;
       const at = options?.overriddenAt ?? nowUtc();
@@ -117,7 +118,7 @@ export class Trip extends Entity {
     }
 
     // Shared reservation grouping rules
-    if (res.type === ReservationType.Shared && this.reservations.length > 0) {
+    if (res.type === ReservationServiceType.Shared && this.reservations.length > 0) {
       const existing = this.reservations[0];
       if (existing.orgId !== res.orgId) {
         throw new GroupingError("shared reservations must be same organization");

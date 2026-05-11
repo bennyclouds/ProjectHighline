@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect } from "./vitest";
 import { Trip } from "../trips/Trip";
 import { Reservation } from "../reservations/Reservation";
 import { ReservationType } from "../reservations/ReservationType";
