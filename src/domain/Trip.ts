@@ -40,10 +40,11 @@ export class Trip extends Entity {
     { by: string; at: Timestamp; reason: string }
   > = new Map();
 
-  constructor(id: string) {
-    super();
-    this.id = id;
-  }
+  constructor(id: string, tripNumber: string) {
+  super();
+  this.id = id;
+  this.tripNumber = tripNumber;
+}
 
   // ---------- Read accessors ----------
   getState(): TripState {
@@ -65,6 +66,11 @@ export class Trip extends Entity {
   getOverrideRecordForReservation(reservationId: string) {
     return this.overrideRecords.get(reservationId);
   }
+
+  getTripNumber(): string {
+  return this.tripNumber;
+}
+
 
   // ---------- Reservation management ----------
   addReservation(
