@@ -90,6 +90,7 @@ export class Reservation extends Entity {
   // --- Lifecycle & system fields
   private state: typeof ReservationState[keyof typeof ReservationState] = ReservationState.Booked;
   private tripId?: string;
+  private confirmationNumber: string;
   readonly createdAt: Timestamp;
   readonly createdBy: string;
 

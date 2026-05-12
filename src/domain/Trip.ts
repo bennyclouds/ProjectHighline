@@ -30,7 +30,7 @@ export class Trip extends Entity {
 
   private state: TripState = TripState.Draft;
   private reservations: Reservation[] = [];
-
+  private tripNumber: string;
   private vehicleId?: string;
   private driverId?: string;
 
