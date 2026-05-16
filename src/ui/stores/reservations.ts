@@ -1,18 +1,28 @@
 import { defineStore } from "pinia";
-import { getAllReservations } from "../services/api";
+import { getAllReservations, createReservation } from "../services/api";
 import type { ReservationSummary } from "../types/domain";
 
-export const useReservationsStore = defineStore("reservations", {
+export const useReservationStore = defineStore("reservations", {
   state: () => ({
-    reservations: [] as ReservationSummary[],
+    items: [] as ReservationSummary[],
     loading: false,
   }),
 
   actions: {
     async load() {
       this.loading = true;
-      this.reservations = await getAllReservations();
+      this.items = await getAllReservations();
       this.loading = false;
+    },
+
+    async create(payload: {
+      passengerName: string;
+      pickupTimeMs: number;
+      pickupLocation: string;
+      dropoffLocation: string;
+    }) {
+      const r = await createReservation(payload);
+      this.items.push(r);
     },
   },
 });

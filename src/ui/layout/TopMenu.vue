@@ -10,6 +10,28 @@
   </nav>
 </template>
 
+<template>
+  <div class="top-menu">
+    <button @click="showModal = true">New Reservation</button>
+    <ReservationModal :open="showModal" @close="showModal = false" />
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+import ReservationModal from "../components/ReservationModal.vue";
+
+export default defineComponent({
+  name: "TopMenu",
+  components: { ReservationModal },
+  setup() {
+    const showModal = ref(false);
+    return { showModal };
+  },
+});
+</script>
+
+
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
