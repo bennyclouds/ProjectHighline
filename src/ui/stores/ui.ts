@@ -1,17 +1,32 @@
+// src/ui/stores/ui.ts
 import { defineStore } from "pinia";
+import { timeToX } from "../utils/timeScale";
 
 export const useUiStore = defineStore("ui", {
   state: () => ({
-    selectedTripId: null as string | null,
-    selectedReservationId: null as string | null,
+    timelineRange: {
+      start: "",
+      end: "",
+    },
+    zoom: 3, // px per minute
+    nowMs: Date.now(),
   }),
 
-  actions: {
-    selectTrip(id: string | null) {
-      this.selectedTripId = id;
+  getters: {
+    nowX(state) {
+      return timeToX(
+        new Date(state.nowMs).toISOString(),
+        state.timelineRange,
+        state.zoom
+      );
     },
-    selectReservation(id: string | null) {
-      this.selectedReservationId = id;
+  },
+
+  actions: {
+    startNowTicker() {
+      setInterval(() => {
+        this.nowMs = Date.now();
+      }, 1000);
     },
   },
 });
