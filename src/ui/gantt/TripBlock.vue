@@ -1,49 +1,13 @@
 <template>
   <div
     class="trip-block"
-    :style="style"
-    @click="$emit('select', trip)"
-    draggable="false"
-    title="Trip {{ trip.tripNumber }}"
-  >
-    <div class="label">{{ trip.tripNumber }}</div>
-  </div>
-</template>
-
-<script lang="ts">
-import { defineComponent, computed } from "vue";
-import type { TripSummary } from "../types/domain";
-import { timeToX } from "../utils/timeScale";
-
-export default defineComponent({
-  name: "TripBlock",
-  props: { trip: { type: Object as () => TripSummary, required: true }, range: { type: Object, required: true }, zoom: { type: Number, required: true } },
-  setup(props) {
-    const style = computed(() => {
-      const left = timeToX(props.trip.start, props.range, props.zoom);
-      const right = timeToX(props.trip.end, props.range, props.zoom);
-      const width = Math.max(24, right - left);
-      return { left: left + "px", width: width + "px", position: "absolute" };
-    });
-    return { style };
-  },
-});
-</script>
-
-<style scoped>
-.trip-block { background: #2b8cff; color: white; border-radius: 4px; padding: 4px; box-sizing: border-box; cursor: pointer; }
-.label { font-size: 12px; font-weight: 600; }
-</style>
-
-<template>
-  <div
-    class="trip-box"
-    :style="tripBoxStyle"
+    :style="tripBlockStyle"
+    @click="onSelect"
   >
     <div
-      class="reservation-strip"
-      v-for="(r, i) in reservations"
+      v-for="(r, i) in trip.reservations"
       :key="r.reservationId"
+      class="reservation-strip"
       :style="stripStyle(i)"
     >
       {{ r.passengerName }}
@@ -53,15 +17,24 @@ export default defineComponent({
 
 <script lang="ts">
 import { defineComponent, computed } from "vue";
+import { useTripColorSchemeStore } from "../../stores/tripColorScheme";
+import { useSelectionStore } from "../../stores/selection";
+import { timeToX } from "../../utils/timeScale";
 
 export default defineComponent({
-  name: "GanttTripBox",
+  name: "TripBlock",
   props: {
-    reservations: { type: Array, required: true },
-    stripHeight: { type: Number, default: 50 }, // px
+    trip: { type: Object, required: true },
+    stripHeight: { type: Number, default: 50 },
+    timelineRange: { type: Object, required: true },
+    zoom: { type: Number, required: true },
   },
+
   setup(props) {
-    const totalStrips = computed(() => props.reservations.length);
+    const scheme = useTripColorSchemeStore();
+    const selection = useSelectionStore();
+
+    const totalStrips = computed(() => props.trip.reservations.length);
     const totalStripHeight = computed(() => totalStrips.value * props.stripHeight);
     const tripBoxHeight = computed(() => props.stripHeight * 6);
 
@@ -69,12 +42,23 @@ export default defineComponent({
       (tripBoxHeight.value - totalStripHeight.value) / 2
     );
 
-    const tripBoxStyle = computed(() => ({
+    const leftX = computed(() =>
+      timeToX(props.trip.startIso, props.timelineRange, props.zoom)
+    );
+
+    const widthPx = computed(() =>
+      timeToX(props.trip.endIso, props.timelineRange, props.zoom) - leftX.value
+    );
+
+    const tripBlockStyle = computed(() => ({
+      position: "absolute",
+      left: `${leftX.value}px`,
+      width: `${widthPx.value}px`,
       height: `${tripBoxHeight.value}px`,
-      position: "relative",
-      background: "#d0e8ff",
-      border: "1px solid #8bb7e0",
+      background: scheme.colors[props.trip.status],
+      border: "1px solid rgba(0,0,0,0.2)",
       borderRadius: "4px",
+      overflow: "hidden",
     }));
 
     function stripStyle(index: number) {
@@ -84,8 +68,8 @@ export default defineComponent({
         right: "0",
         height: `${props.stripHeight}px`,
         top: `${verticalOffset.value + index * props.stripHeight}px`,
-        background: "#ffffff",
-        border: "1px solid #aac7ff",
+        background: "white",
+        border: "1px solid rgba(0,0,0,0.15)",
         borderRadius: "3px",
         display: "flex",
         alignItems: "center",
@@ -94,10 +78,30 @@ export default defineComponent({
       };
     }
 
+    function onSelect() {
+      selection.selectTrip(props.trip.tripNumber);
+    }
+
     return {
-      tripBoxStyle,
+      tripBlockStyle,
       stripStyle,
+      onSelect,
     };
   },
 });
 </script>
+
+<style scoped>
+.trip-block {
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+}
+
+.trip-block:hover {
+  box-shadow: 0 0 6px rgba(0,0,0,0.25);
+}
+
+.reservation-strip {
+  user-select: none;
+}
+</style>

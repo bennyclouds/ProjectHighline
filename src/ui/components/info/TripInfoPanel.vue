@@ -29,13 +29,13 @@
 
 <script lang="ts">
 import { defineComponent, computed } from "vue";
-import { useTripStore } from "../../stores/trips";
+import { useTripsStore } from "../../stores/trips";
 
 export default defineComponent({
   name: "TripInfoPanel",
   props: { selection: { type: Object, required: true } },
   setup(props) {
-    const trips = useTripStore();
+    const trips = useTripsStore();
 
     const trip = computed(() =>
       trips.byTripNumber[props.selection.tripNumber]

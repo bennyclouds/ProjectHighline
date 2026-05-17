@@ -9,6 +9,11 @@
   </div>
 </template>
 
+<span class="status-badge" :style="{ background: statusColor }">
+  {{ trip.status }}
+</span>
+
+
 <script lang="ts">
 import { defineComponent, computed, ref } from "vue";
 import { useSelectionStore } from "../stores/selection";
@@ -32,6 +37,8 @@ export default defineComponent({
       if (selection.value.type === "reservation") return ReservationInfoPanel;
       return null;
     });
+
+    const statusColor = computed(() => scheme.colors[trip.value.status]);
 
     return { selection, activeComponent, width };
   },

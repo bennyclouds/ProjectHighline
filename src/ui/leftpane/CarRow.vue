@@ -9,6 +9,10 @@
     @drop.prevent="onDrop"
   
   >
+    <div
+  class="car-row"
+  :style="{ borderLeft: '6px solid ' + tripColor }"
+>
 
     <div class="car-header">
       <strong>{{ car.carNumber }}</strong>

@@ -37,8 +37,8 @@ import TripBlock from "./TripBlock.vue";
 import NowLine from "./NowLine.vue";
 import TimelineRuler from "./TimelineRuler.vue";
 import { useUiStore } from "../stores/ui";
-import { useVehicleStore } from "../stores/vehicles";
-import { useTripStore } from "../stores/trips";
+import { useVehiclesStore } from "../stores/vehicles";
+import { useTripsStore } from "../stores/trips";
 import { useReservationStore } from "../stores/reservations";
 
 export default defineComponent({
@@ -46,8 +46,8 @@ export default defineComponent({
   components: { TripBlock, NowLine, TimelineRuler },
   setup() {
     const ui = useUiStore();
-    const vehicles = useVehicleStore();
-    const trips = useTripStore();
+    const vehicles = useVehiclesStore();
+    const trips = useTripsStore();
     const reservations = useReservationStore();
 
     const rows = computed(() => vehicles.items);
